@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Informazioni generali del piano</h2>
+      <form (ngSubmit)="saveGeneralInfo()">
+        <div class="form-group">
+          <label for="planName">Name:</label>
+          <input type="text" class="form-control" placeholder="Enter plan's name" id="planName" name="planName" [(ngModel)]="planData.name" [value]="plan.name">
+        </div>
+        <div class="form-group">
+          <label for="planLength">Length in days:</label>
+          <input type="number" class="form-control" placeholder="Enter plan's length in days" id="planLength" name="planLength" [(ngModel)]="planData.length" [value]="plan.length">
+        </div>
+        <div class="form-group">
+          <label for="planType">Type:</label>
+          <input type="text" class="form-control" placeholder="Enter plan's type" id="planType" name="planType" [(ngModel)]="planData.type" [value]="plan.type">
+        </div>
+
+        <button type="submit">Update plan</button>
+      </form>
+
+
+      <h3>Medicine incluse nel piano:</h3>
+      <table>
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Dosaggio</th>
+          <th>Produttore</th>
+          <th>Azione</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let medicine of plan.medicines">
+          <td>{{ medicine.id }}</td>
+          <td>{{ medicine.name }}</td>
+          <td>{{ medicine.dosage }}</td>
+          <td>{{ medicine.manufacturer }}</td>
+          <td>
+            <button (click)="removeMedicine(medicine)">Remove from plan</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button (click)="updatePlan()">Update plan</button>
+
+    <div class="col-md-6">
+      <h2>Ricerca e informazioni medicinale</h2>
+      <input type="text" placeholder="Search Medicine" name="searchText" #searchBox>
+      <button class="primary" type="button" (click)="searchMedicine(searchBox.value)">Search</button>
+
+
+
+      <table>
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Dosaggio</th>
+          <th>Produttore</th>
+          <th>Azione</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let medicine of searchResults">
+          <td>{{ medicine.id }}</td>
+          <td>{{ medicine.name }}</td>
+          <td>{{ medicine.dosage }}</td>
+          <td>{{ medicine.manufacturer }}</td>
+          <td>
+            <button (click)="addMedicineToPlan(medicine)">Aggiungi al piano</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

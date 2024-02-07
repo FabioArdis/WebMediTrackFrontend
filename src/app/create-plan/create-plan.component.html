@@ -1,0 +1,21 @@
+<button (click)="goToHome()">Home</button>
+<form (ngSubmit)="createPlan()">
+  <div *ngIf="sessionStorage.getItem('userType') === 'doctor'" class="form-group">
+    <label for="patientUsername">Patient username:</label>
+    <input type="text" class="form-control" placeholder="Enter patient's username" id="patientUsername" name="patientUsername" [(ngModel)]="planData.patientUsername">
+  </div>
+  <div class="form-group">
+    <label for="planName">Name:</label>
+    <input type="text" class="form-control" placeholder="Enter plan's name" id="planName" name="planName" [(ngModel)]="planData.name">
+  </div>
+  <div class="form-group">
+    <label for="planLength">Length in days:</label>
+    <input type="number" class="form-control" placeholder="Enter plan's length in days" id="planLength" name="planLength" [(ngModel)]="planData.planLength">
+  </div>
+  <div class="form-group">
+    <label for="planType">Type:</label>
+    <input type="text" class="form-control" placeholder="Enter plan's type" id="planType" name="planType" [(ngModel)]="planData.type">
+  </div>
+
+  <button type="submit">Create plan</button>
+</form>

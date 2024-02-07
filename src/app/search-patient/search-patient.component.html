@@ -1,0 +1,23 @@
+<button (click)="goToHome()">Home</button>
+<form (ngSubmit)="searchPatient()">
+  <div class="input-group">
+    <label for="patName">Patient</label><input type="text" class="form-control" id="patName" name="patName" placeholder="Insert medicine name"  required [(ngModel)]="patName">
+    <div class="input-group-append">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="foundPatient != null" class="d-flex flex-wrap">
+  <div class="card-body">
+    <h2>Patient Details</h2>
+    <p>Username: {{foundPatient.username}}</p>
+    <p>Name: {{foundPatient.name}}</p>
+    <p>Surname: {{foundPatient.surname}}</p>
+    <p>Codice Fiscale: {{foundPatient.cf}}</p>
+    <div class="d-flex flex-wrap">
+      <button class="btn btn-success mr-2" (click)="addPatient()">Add patient</button>
+      <button class="btn btn-danger" (click)="removePatient()">Remove patient</button>
+    </div>
+  </div>
+</div>

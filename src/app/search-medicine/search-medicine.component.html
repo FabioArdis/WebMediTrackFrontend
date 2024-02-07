@@ -1,0 +1,32 @@
+<button (click)="goToHome()">Home</button>
+<form (ngSubmit)="searchMedicine()">
+  <div class="input-group">
+    <label for="name">Medicine</label><input type="text" class="form-control" id="name" name="name" placeholder="Insert medicine name"  required [(ngModel)]="medName">
+    <div class="input-group-append">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="searchMedicineList != null" class="d-flex flex-wrap">
+  <div *ngFor="let med of searchMedicineList" [attr.id]="'r' + med.id" class="card mb-3 mr-2" style="max-width: 300px;">
+    <div class="card-body">
+      <div *ngIf="med">
+        <h2>Medicine Details</h2>
+        <p>Id: {{med.id}}</p>
+        <p>Name: {{med.name}}</p>
+        <p>Dosage: {{med.dosage}}</p>
+        <p>Manufacturer: {{med.manufacturer}}</p>
+
+        <div class="d-flex flex-wrap">
+          <form action="/addMedicine" method="post">
+            <button type="submit" class="btn btn-success mr-2">Add medicine</button>
+          </form>
+          <form action="/removeMedicine" method="post">
+            <button type="submit" class="btn btn-danger">Remove medicine</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

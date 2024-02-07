@@ -1,0 +1,84 @@
+<button (click)="goToHome()">Home</button>
+<button class="btn btn-success mr-2" (click)="updateUser()">Update data</button>
+<h1>User info:</h1>
+<div *ngIf="user">
+  <p>Name: {{ user.name }}</p>
+  <p>Surname: {{ user.surname}}</p>
+  <p>Username: {{ user.username }}</p>
+  <p>E-mail: {{ user.email }}</p>
+  <p>Birth Date: {{ user.birthDate }}</p>
+  <p>Codice Fiscale: {{ user.cf }}</p>
+
+  <div *ngIf="sessionStorage.getItem('userType') == 'doctor'">
+    <p>Doctor ID: {{ user.doctorId }} </p>
+    <p>Specialization: {{ user.spec }}</p>
+    <p>Availability: {{ user.docAvailTime }}</p>
+    <h1>List of patients:</h1>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Codice Fiscale</th>
+        <th>Tessera Sanitaria code</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="user.patients">
+      <tr *ngFor="let pat of user.patients" [attr.id]="'r' + pat.username">
+        <td>{{pat.username}}</td>
+        <td>{{pat.name}}</td>
+        <td>{{pat.surname}}</td>
+        <td>{{pat.cf}}</td>
+        <td>{{pat.tscode}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div *ngIf="sessionStorage.getItem('userType') == 'patient'">
+    <p>Tessera Sanitaria code: {{user.tscode}}</p>
+    <h1>List of plans</h1>
+    <div *ngIf="user.plans">
+      <div *ngFor="let plan of user.plans" [attr.id]="'r' + plan.username">
+        <div class="card-body">
+          <div *ngIf="plan">
+            <p>Name: {{plan.name}}</p>
+            <p>Type: {{plan.type}}</p>
+            <p>Length: {{plan.length}}</p>
+
+            <div class="d-flex flex-wrap">
+              <button class="btn btn-success mr-2" (click)="editPlan(plan.id)">Modifica</button>
+              <button class="btn btn-danger" (click)="removePlan(plan.id)">Cancella</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <h1>List of doctors</h1>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Specialization</th>
+        <th>Availability</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="user.doctors">
+      <tr *ngFor="let doc of user.doctors" [attr.id]="'r' + doc.username">
+        <td>{{doc.username}}</td>
+        <td>{{doc.name}}</td>
+        <td>{{doc.surname}}</td>
+        <td>{{doc.spec}}</td>
+        <td>{{doc.docAvailTime}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<header>
+  <h1>MediTrack</h1>
+  <div *ngIf="user">
+    <p>Welcome, {{user.name}}.</p>
+    <div *ngIf="sessionStorage.getItem('userType') == 'doctor'">
+      <button (click)="searchPatient()">Search patient</button>
+      <button (click)="searchMedicine()">Search medicine</button>
+    </div>
+    <button (click)="createPlan()">Create plan</button>
+    <button (click)="userInfo()">Check user info</button>
+    <button (click)="logout()">Logout</button>
+  </div>
+  <div *ngIf="!user">
+    <p>Welcome.</p>
+    <button (click)="register('doc')">Register as a doctor</button>
+    <button (click)="register('pat')">Register as a patient</button>
+    <button (click)="login('doc')">Login as a doctor</button>
+    <button (click)="login('pat')">Login as a patient</button>
+  </div>
+</header>

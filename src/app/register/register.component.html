@@ -1,0 +1,45 @@
+<button (click)="goToHome()">Home</button>
+<form (ngSubmit)="registerUser()">
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" class="form-control" placeholder="Enter username" id="username" name="username" [(ngModel)]="userData.username">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="password" [(ngModel)]="userData.password">
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" placeholder="Enter email" id="email" name="email" [(ngModel)]="userData.email">
+  </div>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" placeholder="Enter name" id="name" name="name" [(ngModel)]="userData.name">
+  </div>
+  <div class="form-group">
+    <label for="surname">Surname:</label>
+    <input type="text" class="form-control" placeholder="Enter surname" id="surname" name="surname" [(ngModel)]="userData.surname">
+  </div>
+  <div class="form-group">
+    <label for="birthDate">Birth date:</label>
+    <input type="date" class="form-control" placeholder="Enter birth date" id="birthDate" name="birthDate" [(ngModel)]="userData.birthDate">
+  </div>
+  <div class="form-group">
+    <label for="cf">Codice Fiscale:</label>
+    <input type="text" class="form-control" placeholder="Enter Codice Fiscale" id="cf" name="cf" [(ngModel)]="userData.cf">
+  </div>
+  <div id="doctorFields" class="form-group" style="display:none;">
+    <label for="doctorId">Doctor ID:</label>
+    <input type="text" class="form-control" placeholder="Enter doctor ID" id="doctorId" name="doctorId" [(ngModel)]="userData.doctorId">
+    <label for="spec">Specialization:</label>
+    <input type="text" class="form-control" placeholder="Enter specialization" id="spec" name="spec" [(ngModel)]="userData.spec">
+    <label for="docAvailTime">Availability:</label>
+    <input type="text" class="form-control" placeholder="Enter doctor's availability" id="docAvailTime" name="docAvailTime" [(ngModel)]="userData.docAvailTime">
+  </div>
+  <div id="patientFields" class="form-group" style="display:none;">
+    <label for="tsCode">Tessera Sanitaria code:</label>
+    <input type="text" class="form-control" placeholder="Enter Tessera Sanitaria code" id="tsCode" name="tsCode" [(ngModel)]="userData.tsCode">
+  </div>
+
+  <button type="submit">Registrati</button>
+</form>
