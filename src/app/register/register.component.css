@@ -1,0 +1,18 @@
+.column-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Allinea gli elementi a sinistra */
+  margin-bottom: 1px;
+}
+
+.form-row {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start; /* Allinea gli elementi a sinistra */
+}
+
+.form-field {
+  width: calc(30% - 12px); /* Calcoliamo la larghezza per affiancare due campi per riga */
+  margin-right: 20px; /* Aggiungiamo un margine destro per separare i campi */
+}
+

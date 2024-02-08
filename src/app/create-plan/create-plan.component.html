@@ -19,3 +19,25 @@
 
   <button type="submit">Create plan</button>
 </form>
+
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Username</th>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Codice Fiscale</th>
+    <th>Tessera Sanitaria code</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="user.patients">
+  <tr *ngFor="let pat of user.patients" [attr.id]="'r' + pat.username">
+    <td>{{pat.username}}</td>
+    <td>{{pat.name}}</td>
+    <td>{{pat.surname}}</td>
+    <td>{{pat.cf}}</td>
+    <td>{{pat.tscode}}</td>
+  </tr>
+  </tbody>
+</table>

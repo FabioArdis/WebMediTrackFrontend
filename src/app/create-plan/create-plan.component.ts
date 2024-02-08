@@ -9,10 +9,12 @@ import {Router} from "@angular/router";
 })
 export class CreatePlanComponent implements OnInit {
   planData : any = {};
+  user : any ;
 
   constructor(private userService : UserService, private router : Router) {
   }
   ngOnInit(): void {
+    this.user = this.userService.getUser();
     if (sessionStorage.getItem("userType") === "patient") {
       const patientFields = document.getElementById("doctorFields")
       if (patientFields)

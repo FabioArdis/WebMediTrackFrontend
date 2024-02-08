@@ -1,20 +1,52 @@
-<header>
-  <h1>MediTrack</h1>
-  <div *ngIf="user">
-    <p>Welcome, {{user.name}}.</p>
-    <div *ngIf="sessionStorage.getItem('userType') == 'doctor'">
-      <button (click)="searchPatient()">Search patient</button>
-      <button (click)="searchMedicine()">Search medicine</button>
+
+<mat-drawer-container class="example-container" autosize>
+
+  <mat-toolbar color="primary">
+    <span class="example-toolbar-title">Meditrack</span>
+  </mat-toolbar>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+
+    <div class="example-button-row button" *ngIf="!user">
+
+      <button mat-raised-button color="primary" (click)="register('doc')">
+        <mat-icon> home </mat-icon>
+        Registrazione dottori
+      </button>
+
+      <button mat-raised-button color="primary" (click)="register('pat')"> Registrazione pazienti</button>
+      <button mat-raised-button color="primary" (click)="login('doc')"> Login dottori </button>
+      <button mat-raised-button color="primary" (click)="login('pat')"> Login pazienti</button>
+
     </div>
-    <button (click)="createPlan()">Create plan</button>
-    <button (click)="userInfo()">Check user info</button>
-    <button (click)="logout()">Logout</button>
+
+    <div class="example-button-row button" *ngIf="user">
+      <h1>Benvenuto! <span style="font-style: italic;">{{user.name}}</span>.</h1>
+      <div *ngIf="sessionStorage.getItem('userType') == 'doctor'">
+        <button mat-raised-button color="primary" (click)="searchPatient()">Search patient</button>
+        <button mat-raised-button color="primary" (click)="searchMedicine()">Search medicine</button>
+      </div>
+      <button mat-raised-button color="primary" (click)="createPlan()">Create plan</button>
+      <button mat-raised-button color="primary" (click)="userInfo()">Check user info</button>
+      <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+    </div>
+
+
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+
+    <button mat-fab extended="true" color="primary" (click)="drawer.toggle()">
+      <mat-icon>home</mat-icon>
+      Clicca qui per iniziare
+    </button>
+
   </div>
-  <div *ngIf="!user">
-    <p>Welcome.</p>
-    <button (click)="register('doc')">Register as a doctor</button>
-    <button (click)="register('pat')">Register as a patient</button>
-    <button (click)="login('doc')">Login as a doctor</button>
-    <button (click)="login('pat')">Login as a patient</button>
-  </div>
-</header>
+
+</mat-drawer-container>
+
+
+
+
+
+
+

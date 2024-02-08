@@ -1,0 +1,14 @@
+.mat-list {
+  width: 300px; /* Imposta una larghezza fissa per la lista */
+  margin: 20px; /* Aggiunge margini per separare la lista dagli altri contenuti */
+  padding: 10px; /* Aggiunge padding per uno spazio interno */
+  border: 5px solid #ccc; /* Aggiunge un bordo per evidenziare la lista */
+  border-radius: 5px; /* Aggiunge un bordo arrotondato */
+}
+
+.mat-list-item {
+  font-size: 16px; /* Modifica la dimensione del carattere */
+  margin-bottom: 8px; /* Aggiunge spazio tra gli elementi della lista */
+}
+
+

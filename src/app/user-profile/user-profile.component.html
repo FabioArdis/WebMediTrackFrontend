@@ -1,18 +1,37 @@
 <button (click)="goToHome()">Home</button>
 <button class="btn btn-success mr-2" (click)="updateUser()">Update data</button>
+
 <h1>User info:</h1>
+
 <div *ngIf="user">
-  <p>Name: {{ user.name }}</p>
-  <p>Surname: {{ user.surname}}</p>
-  <p>Username: {{ user.username }}</p>
-  <p>E-mail: {{ user.email }}</p>
-  <p>Birth Date: {{ user.birthDate }}</p>
-  <p>Codice Fiscale: {{ user.cf }}</p>
+
+  <mat-list role="list" class="mat-list">
+    <mat-list-item class = "mat-list-item" role="listitem">Name: {{ user.name }}</mat-list-item>
+    <mat-list-item role="listitem">Surname: {{ user.surname}}</mat-list-item>
+    <mat-list-item role="listitem">E-mail: {{ user.email }}</mat-list-item>
+    <mat-list-item role="listitem">Birth Date: {{ user.birthDate }}</mat-list-item>
+    <mat-list-item role="listitem">Codice Fiscale: {{ user.cf }}</mat-list-item>
+
+    <ng-container *ngIf="sessionStorage.getItem('userType') == 'doctor'">
+      <mat-list-item role="listitem">Doctor ID: {{ user.doctorId }}</mat-list-item>
+      <mat-list-item role="listitem">Specialization: {{ user.spec }}</mat-list-item>
+      <mat-list-item role="listitem">Availability: {{ user.docAvailTime }}</mat-list-item>
+      <mat-list-item role="listitem">Codice Fiscale: {{ user.cf }}</mat-list-item>
+    </ng-container>
+
+    <ng-container *ngIf="sessionStorage.getItem('userType') == 'patient'">
+      <mat-list-item role="listitem">Tessera Sanitaria code: {{user.tscode}}</mat-list-item>
+    </ng-container>
+
+  </mat-list>
+
 
   <div *ngIf="sessionStorage.getItem('userType') == 'doctor'">
     <p>Doctor ID: {{ user.doctorId }} </p>
     <p>Specialization: {{ user.spec }}</p>
     <p>Availability: {{ user.docAvailTime }}</p>
+
+
     <h1>List of patients:</h1>
     <table class="table table-striped">
       <thead>
@@ -38,7 +57,7 @@
 
 
   <div *ngIf="sessionStorage.getItem('userType') == 'patient'">
-    <p>Tessera Sanitaria code: {{user.tscode}}</p>
+
     <h1>List of plans</h1>
     <div *ngIf="user.plans">
       <div *ngFor="let plan of user.plans" [attr.id]="'r' + plan.username">

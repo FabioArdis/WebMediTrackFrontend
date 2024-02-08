@@ -1,5 +1,5 @@
-<button (click)="goToHome()">Home</button>
-<form (ngSubmit)="registerUser()">
+
+<!--form (ngSubmit)="registerUser()">
   <div class="form-group">
     <label for="username">Username:</label>
     <input type="text" class="form-control" placeholder="Enter username" id="username" name="username" [(ngModel)]="userData.username">
@@ -42,4 +42,88 @@
   </div>
 
   <button type="submit">Registrati</button>
+</form-->
+
+<mat-toolbar color="primary">
+  <span class="example-toolbar-title">Meditrack</span>
+  <button (click)="goToHome()">Home</button>
+</mat-toolbar>
+
+<form (ngSubmit)="registerUser()" class="column-form" #registrationForm = "ngForm">
+  <div class="form-row">
+    <mat-form-field class="form-field">
+      <mat-label>nome</mat-label>
+      <input matInput type="text" class="form-control" placeholder="Inserisci nome" id="name" name="name" [(ngModel)]="userData.name" required>
+      <mat-error *ngIf="registrationForm.controls['name'].invalid && registrationForm.controls['name'].touched">Username is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>cognome</mat-label>
+      <input matInput type="text" class="form-control" placeholder="Inserisci cognome" id="surname" name="surname" [(ngModel)]="userData.surename" required>
+      <mat-error *ngIf="registrationForm.controls['surname'].invalid && registrationForm.controls['surname'].touched">Username is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="form-field">
+      <mat-label>Username</mat-label>
+      <input matInput type="text" class="form-control" placeholder="Inserisci un username" id="username" name="username" [(ngModel)]="userData.username" required>
+      <mat-error *ngIf="registrationForm.controls['username'].invalid && registrationForm.controls['username'].touched">Username is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Password</mat-label>
+      <input matInput type="text" class="form-control" placeholder="Inserisci una password" id="password" name="password" [(ngModel)]="userData.password" required>
+      <mat-error *ngIf="registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched">Username is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="form-field">
+      <mat-label>Anno Di Nascita</mat-label>
+      <input matInput type="date" class="form-control" placeholder="Inserisci una data" id="birthDate"  name="birthDate" [(ngModel)]="userData.birthDate" required>
+      <mat-error *ngIf="registrationForm.controls['birthDate'].invalid && registrationForm.controls['birthDate'].touched">Username is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Codice Fiscale</mat-label>
+      <input matInput type="text" class="form-control" placeholder="Inserire codice fiscale" id="cf" name="cf" [(ngModel)]="userData.cf" required>
+      <mat-error *ngIf="registrationForm.controls['cf'].invalid && registrationForm.controls['cf'].touched">Username is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="form-field">
+    <mat-label>Email</mat-label>
+    <input matInput type="text" class="form-control" placeholder="Inserire email" id="email" name="email" [(ngModel)]="userData.email" required>
+    <mat-error *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched">Username is required</mat-error>
+  </mat-form-field>
+
+  <div id="doctorFields" class="form-group" style="display:none;">
+    <mat-form-field class="form-field">
+      <mat-label>Doctor ID</mat-label>
+      <input matInput type="text" class="form-control" placeholder="Inserisci una data" id="doctorId"  name="doctorId" [(ngModel)]="userData.doctorId" >
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Specializzazione</mat-label>
+      <input matInput type="text" class="form-control" placeholder="Inserire Specializzazione" id="spec" name="spec" [(ngModel)]="userData.spec" >
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Disponibilità</mat-label>
+      <input matInput type="text" class="form-control" placeholder="Inserire Disponibilità" id="docAvailTime" name="docAvailTime" [(ngModel)]="userData.docAvailTime">
+    </mat-form-field>
+  </div>
+
+
+  <div class="form-row" id="patientFields"  style="display:none;">
+    <mat-form-field class="form-field">
+      <mat-label>Tessera Sanitaria</mat-label>
+      <input matInput type="text" class="form-control" placeholder="Inserire Tessera Sanitaria" id="tsCode" name="tsCode" [(ngModel)]="userData.tsCode" >
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="registrationForm.invalid">Registrati</button>
+
 </form>
+

@@ -1,0 +1,15 @@
+.page-container {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.column-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
