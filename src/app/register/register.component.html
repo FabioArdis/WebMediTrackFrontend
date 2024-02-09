@@ -44,9 +44,13 @@
   <button type="submit">Registrati</button>
 </form-->
 
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="toolBar">
   <span class="example-toolbar-title">Meditrack</span>
-  <button (click)="goToHome()">Home</button>
+
+  <button mat-icon-button color="link" (click)="goToHome()" >
+    <mat-icon>home</mat-icon>
+  </button>
+
 </mat-toolbar>
 
 <form (ngSubmit)="registerUser()" class="column-form" #registrationForm = "ngForm">

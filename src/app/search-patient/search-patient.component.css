@@ -1,0 +1,66 @@
+.toolBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolBar .example-toolbar-title {
+  flex: 1;
+}
+
+.toolBar button {
+  margin-left: auto;
+}
+
+.example-card {
+  width: 300px; /* Imposta la larghezza desiderata */
+  margin: 10px; /* Aggiunge margine per separare le card */
+  border: 2px solid transparent; /* Imposta lo spessore del bordo senza colore */
+}
+
+.mat-card-subtitle, .mat-card-title, .mat-card-content, .mat-card-actions {
+  font-size: 14px; /* Imposta la dimensione del testo desiderata */
+}
+.example-card {
+  width: 350px; /* Aumenta la larghezza per dare più spazio ai contenuti */
+  margin: 10px; /* Aggiunge margine per separare le card */
+  padding: 20px; /* Aggiunge spazio interno alla card */
+  border: 2px solid #ccc; /* Aggiunge un bordo leggero per migliorare la visualizzazione */
+  border-radius: 8px; /* Arrotonda i bordi della card */
+}
+
+.mat-card-content {
+  padding-bottom: 20px; /* Aggiunge spazio inferiore al contenuto della card */
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: space-between; /* Allinea i pulsanti ai lati opposti della card */
+  padding-top: 20px; /* Aggiunge spazio sopra ai pulsanti */
+}
+
+p {
+  margin: 5px 0; /* Aggiunge margine sopra e sotto a ciascun paragrafo */
+  font-size: 16px; /* Aumenta la dimensione del testo */
+}.example-card {
+   width: 350px; /* Aumenta la larghezza per dare più spazio ai contenuti */
+   margin: 10px; /* Aggiunge margine per separare le card */
+   padding: 20px; /* Aggiunge spazio interno alla card */
+   border: 2px solid #ccc; /* Aggiunge un bordo leggero per migliorare la visualizzazione */
+   border-radius: 8px; /* Arrotonda i bordi della card */
+ }
+
+.mat-card-content {
+  padding-bottom: 20px; /* Aggiunge spazio inferiore al contenuto della card */
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: space-between; /* Allinea i pulsanti ai lati opposti della card */
+  padding-top: 20px; /* Aggiunge spazio sopra ai pulsanti */
+}
+
+p {
+  margin: 5px 0; /* Aggiunge margine sopra e sotto a ciascun paragrafo */
+  font-size: 16px; /* Aumenta la dimensione del testo */
+}

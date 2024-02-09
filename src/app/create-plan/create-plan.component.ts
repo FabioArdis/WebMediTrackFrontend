@@ -11,6 +11,9 @@ export class CreatePlanComponent implements OnInit {
   planData : any = {};
   user : any ;
 
+  displayedColumns: string[] = ['username', 'name', 'surname', 'cf', 'tscode'];
+
+
   constructor(private userService : UserService, private router : Router) {
   }
   ngOnInit(): void {

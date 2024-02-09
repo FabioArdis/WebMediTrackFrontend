@@ -18,9 +18,14 @@
     </div>
 </form-->
 
-  <mat-toolbar color="primary">
-    <span class="example-toolbar-title">Meditrack</span>
-  </mat-toolbar>
+<mat-toolbar color="primary" class="toolBar">
+  <span class="example-toolbar-title">Meditrack</span>
+
+  <button mat-icon-button color="link" (click)="goToHome()" >
+    <mat-icon>home</mat-icon>
+  </button>
+
+</mat-toolbar>
 
 <form (ngSubmit)="loginUser()" class="page-container ">
   <mat-form-field >
@@ -34,10 +39,17 @@
   </mat-form-field>
 
     <div id="doctorFields" class="form-group" style="display:none;">
-      <button type="submit" class="btn btn-primary">Login as a doctor</button>
+      <button mat-fab extended="true" color="primary" type="submit" class="btn btn-primary" >
+        <mat-icon>account_circle</mat-icon>
+          login Dottore
+      </button>
     </div>
+
     <div id="patientFields" class="form-group" style="display:none;">
-      <button type="submit" class="btn btn-primary">Login as a patient</button>
+      <button mat-fab extended="true" color="primary" type="submit" class="btn btn-primary" >
+        <mat-icon>account_circle</mat-icon>
+          login paziente
+      </button>
     </div>
 
 </form>

@@ -1,22 +1,34 @@
-<button (click)="goToHome()">Home</button>
-<button class="btn btn-success mr-2" (click)="updateUser()">Update data</button>
+<mat-toolbar color="primary" class="toolBar">
+  <span class="example-toolbar-title">Meditrack</span>
+
+  <button mat-icon-button color="link" (click)="goToHome()" >
+    <mat-icon>home</mat-icon>
+  </button>
+
+</mat-toolbar>
+
+
+
+<button class="btn btn-success mr-2" (click)="updateUser()">Update data
+  <mat-icon>home</mat-icon>
+</button>
 
 <h1>User info:</h1>
 
 <div *ngIf="user">
 
-  <mat-list role="list" class="mat-list">
-    <mat-list-item class = "mat-list-item" role="listitem">Name: {{ user.name }}</mat-list-item>
-    <mat-list-item role="listitem">Surname: {{ user.surname}}</mat-list-item>
-    <mat-list-item role="listitem">E-mail: {{ user.email }}</mat-list-item>
-    <mat-list-item role="listitem">Birth Date: {{ user.birthDate }}</mat-list-item>
-    <mat-list-item role="listitem">Codice Fiscale: {{ user.cf }}</mat-list-item>
+  <mat-list role="list" class="mat-list" >
+    <mat-list-item class = "mat-list-item" role="listitem">Nome: {{ user.name }}</mat-list-item>
+    <mat-list-item class = "mat-list-item" role="listitem">Cognome: {{ user.surname}}</mat-list-item>
+    <mat-list-item class = "mat-list-item" role="listitem">E-mail: {{ user.email }}</mat-list-item>
+    <mat-list-item class = "mat-list-item" role="listitem">Anno di nascita: {{ user.birthDate }}</mat-list-item>
+    <mat-list-item class = "mat-list-item" role="listitem">Codice Fiscale: {{ user.cf }}</mat-list-item>
 
-    <ng-container *ngIf="sessionStorage.getItem('userType') == 'doctor'">
-      <mat-list-item role="listitem">Doctor ID: {{ user.doctorId }}</mat-list-item>
-      <mat-list-item role="listitem">Specialization: {{ user.spec }}</mat-list-item>
-      <mat-list-item role="listitem">Availability: {{ user.docAvailTime }}</mat-list-item>
-      <mat-list-item role="listitem">Codice Fiscale: {{ user.cf }}</mat-list-item>
+    <ng-container  *ngIf="sessionStorage.getItem('userType') == 'doctor'">
+      <mat-list-item class = "mat-list-item" role="listitem">Doctor ID: {{ user.doctorId }}</mat-list-item>
+      <mat-list-item class = "mat-list-item" role="listitem">Specializzazione: {{ user.spec }}</mat-list-item>
+      <mat-list-item class = "mat-list-item" role="listitem">Availability: {{ user.docAvailTime }}</mat-list-item>
+      <mat-list-item class = "mat-list-item" role="listitem">Codice Fiscale: {{ user.cf }}</mat-list-item>
     </ng-container>
 
     <ng-container *ngIf="sessionStorage.getItem('userType') == 'patient'">
@@ -27,13 +39,10 @@
 
 
   <div *ngIf="sessionStorage.getItem('userType') == 'doctor'">
-    <p>Doctor ID: {{ user.doctorId }} </p>
-    <p>Specialization: {{ user.spec }}</p>
-    <p>Availability: {{ user.docAvailTime }}</p>
-
 
     <h1>List of patients:</h1>
-    <table class="table table-striped">
+
+    <table class="table table-striped" >
       <thead>
       <tr>
         <th>Username</th>
@@ -53,7 +62,6 @@
       </tr>
       </tbody>
     </table>
-  </div>
 
 
   <div *ngIf="sessionStorage.getItem('userType') == 'patient'">
@@ -100,4 +108,8 @@
       </tbody>
     </table>
   </div>
-</div>
+
+
+
+
+

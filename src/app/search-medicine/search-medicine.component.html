@@ -1,11 +1,24 @@
-<button (click)="goToHome()">Home</button>
-<form (ngSubmit)="searchMedicine()">
+<mat-toolbar color="primary">
+  <span class="example-toolbar-title">Meditrack</span>
+  <button (click)="goToHome()">Home</button>
+
+</mat-toolbar>
+
+<!--form (ngSubmit)="searchMedicine()">
   <div class="input-group">
     <label for="name">Medicine</label><input type="text" class="form-control" id="name" name="name" placeholder="Insert medicine name"  required [(ngModel)]="medName">
     <div class="input-group-append">
       <button type="submit" class="btn btn-primary">Search</button>
     </div>
   </div>
+</form-->
+
+<form (ngSubmit)="searchMedicine()" class="page-container ">
+  <mat-form-field >
+    <mat-label>Medicine</mat-label>
+    <input matInput type="text" class="form-control" placeholder="Inserire Nome Farmaco " id="medName" name="medName" required [(ngModel)]="medName">
+  </mat-form-field>
+  <button type="submit" class="btn btn-primary">Search</button>
 </form>
 
 <div *ngIf="searchMedicineList != null" class="d-flex flex-wrap">
@@ -30,3 +43,26 @@
     </div>
   </div>
 </div>
+
+<!--div *ngIf="searchMedicineList != null" class="d-flex flex-wrap">
+
+  <mat-card class="example-card">
+    <mat-card-subtitle> Dettagli Paziente</mat-card-subtitle>
+    <mat-card-title>Nome : {{foundPatient.name}}</mat-card-title>
+
+    <mat-card-content>
+
+      <p>Username: {{foundPatient.username}}</p>
+      <p>Name: {{foundPatient.name}}</p>
+      <p>Surname: {{foundPatient.surname}}</p>
+      <p>Codice Fiscale: {{foundPatient.cf}}</p>
+
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="btn btn-success mr-2" (click)="addPatient()">Add patient</button>
+      <button class="btn btn-danger" (click)="removePatient()">Remove patient</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div-->

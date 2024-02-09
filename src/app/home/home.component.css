@@ -15,13 +15,8 @@
 .example-sidenav {
   padding: 20px;
   width: 250px;
+  background: rgba(255, 255, 255, 0.9);
 
-
-}
-
-.example-button-row button,
-.example-button-row a {
-  margin-right: 8px;
 }
 
 .example-disabled {
@@ -33,11 +28,41 @@
   text-align: center;
 }
 
-.example-button-row button,
-.example-button-row a {
-  margin-bottom: 10px;
-}
-
 .example-disabled {
   display: inline-block;
 }
+
+.example-button-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.example-button-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+}
+
+.example-button-row button {
+  width: 100%; /* Fai in modo che i bottoni occupino tutta la larghezza disponibile */
+  margin-bottom: 10px; /* Aggiungi margine tra i bottoni se necessario */
+}
+
+.logo-container {
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.logo-container img {
+  width: 200px; /* Imposta la larghezza desiderata per il logo */
+  height: auto; /* Mantieni l'aspect ratio del logo */
+
+}
+
+

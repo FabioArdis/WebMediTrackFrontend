@@ -26,6 +26,25 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatStep, MatStepper} from "@angular/material/stepper";
 import {MatList, MatListItem} from "@angular/material/list";
+import {MatSort, MatSortHeader} from "@angular/material/sort";
+import {
+  MatCard,
+  MatCardActions,
+  MatCardContent,
+  MatCardFooter,
+  MatCardHeader, MatCardSubtitle,
+  MatCardTitle
+} from "@angular/material/card";
+import {MatDivider} from "@angular/material/divider";
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
+  MatTable
+} from "@angular/material/table";
 
 
 
@@ -60,6 +79,26 @@ import {MatList, MatListItem} from "@angular/material/list";
     MatStepper,
     MatList,
     MatListItem,
+    MatSort,
+    MatSortHeader,
+    MatCard,
+    MatCardHeader,
+    MatCardContent,
+    MatCardActions,
+    MatDivider,
+    MatCardFooter,
+    MatCardTitle,
+    MatCardSubtitle,
+    MatHeaderCell,
+    MatCell,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatHeaderRow,
+    MatRow,
+    MatRowDef,
+    MatHeaderRowDef,
 
   ],
   providers: [

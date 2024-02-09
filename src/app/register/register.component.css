@@ -1,18 +1,32 @@
+.toolBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolBar .example-toolbar-title {
+  flex: 1;
+}
+
+.toolBar button {
+  margin-left: auto; /* Sposta il pulsante tutto a destra */
+}
+
 .column-form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Allinea gli elementi a sinistra */
-  margin-bottom: 1px;
+  align-items: flex-start;
+  margin-top: 40px;
 }
 
 .form-row {
   display: flex;
   width: 100%;
-  justify-content: flex-start; /* Allinea gli elementi a sinistra */
+  justify-content: flex-start;
 }
 
 .form-field {
-  width: calc(30% - 12px); /* Calcoliamo la larghezza per affiancare due campi per riga */
-  margin-right: 20px; /* Aggiungiamo un margine destro per separare i campi */
+  width: calc(30% - 12px);
+  margin-right: 20px;
 }
 
