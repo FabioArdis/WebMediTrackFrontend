@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../user.service";
 import {Router} from "@angular/router";
+import {MatTableModule} from '@angular/material/table';
 
 
 @Component({
@@ -12,6 +13,8 @@ export class UserProfileComponent implements OnInit {
   user: any;
   userId: string | null | undefined;
 
+  patientColumns = ['name', 'surname', 'username', 'cf'];
+  doctorColumns = ['name', 'surname', 'username', 'spec'];
 
   constructor(private userService: UserService, private router: Router) {
   }
@@ -46,6 +49,7 @@ export class UserProfileComponent implements OnInit {
     this.userService.updateUser();
     this.user = this.userService.getUser();
   }
+
 }
 
 

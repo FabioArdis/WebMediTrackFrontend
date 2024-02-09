@@ -40,4 +40,5 @@ export class CreatePlanComponent implements OnInit {
   goToHome() {
     this.router.navigate(['']);
   }
+
 }

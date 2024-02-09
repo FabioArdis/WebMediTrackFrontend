@@ -45,6 +45,7 @@ import {
   MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
   MatTable
 } from "@angular/material/table";
+import {MatTableModule} from '@angular/material/table';
 
 
 

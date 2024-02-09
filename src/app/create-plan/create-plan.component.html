@@ -7,16 +7,17 @@
     </button>
   </mat-toolbar>
 
-  <h2> Crea Piano </h2>
   <div class="container">
 
   <form (ngSubmit)="createPlan()" class="form-container">
-
-    <div *ngIf="sessionStorage.getItem('userType') === 'doctor'" class="form-group">
-      <mat-form-field >
-        <mat-label>Patient username</mat-label>
-        <input matInput type="text" class="form-control" placeholder="Inserisci username" id="patientUsername" name="patientUsername" required [(ngModel)]="planData.patientUsername">
-      </mat-form-field>
+    <h2> Crea Piano </h2>
+    <div class="form-group">
+      <div *ngIf="sessionStorage.getItem('userType') === 'doctor'">
+        <mat-form-field >
+          <mat-label>Patient username</mat-label>
+          <input matInput type="text" class="form-control" placeholder="Inserisci username" id="patientUsername" name="patientUsername" required [(ngModel)]="planData.patientUsername">
+        </mat-form-field>
+      </div>
       <mat-form-field >
         <mat-label>Plan Name:</mat-label>
         <input matInput type="text" class="form-control" placeholder="Inserisci Plan Name" id="planName" name="planName" required [(ngModel)]="planData.name">
@@ -32,11 +33,12 @@
     </div>
 
 
+
     <button mat-raised-button type="submit" color="primary"  >Create plan</button>
   </form>
 
 
-  <div class="table-conainer">
+  <div class="table-container">
       <h2> Pazienti Attualmente Disponibili </h2>
       <table mat-table  [dataSource]="user.patients">
 
