@@ -1,3 +1,21 @@
+.toolBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolBar .example-toolbar-title {
+  flex: 1;
+}
+
+.toolBar button {
+  margin-left: auto;
+}
+
+.container {
+  display: flex;
+}
+
 .mat-list {
   margin: 10px; /* Aggiunge margini per separare la lista dagli altri contenuti */
   padding: 10px; /* Aggiunge padding per uno spazio interno */
@@ -16,17 +34,6 @@
   box-sizing: border-box; /* Include il bordo nella larghezza */
 }
 
-.toolBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.toolBar .example-toolbar-title {
-  flex: 1;
-}
 
-.toolBar button {
-  margin-left: auto;
-}
 

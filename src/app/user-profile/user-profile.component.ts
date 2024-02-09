@@ -12,6 +12,7 @@ import {MatTableModule} from '@angular/material/table';
 export class UserProfileComponent implements OnInit {
   user: any;
   userId: string | null | undefined;
+  searchPlansList : any = {};
 
   patientColumns = ['name', 'surname', 'username', 'cf'];
   doctorColumns = ['name', 'surname', 'username', 'spec'];
