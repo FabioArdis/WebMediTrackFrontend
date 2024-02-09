@@ -17,6 +17,8 @@ export class EditPlanComponent implements OnInit {
   searchResults: any;
   selectedMedicine: any = null;
 
+  medicineColumns: string[] = ['id', 'name', 'dosage', 'manufacturer', 'action'];
+
   constructor(private searchService : SearchService, private userService : UserService, private planService : PlanService, private router : Router) {
   }
 
@@ -119,4 +121,8 @@ export class EditPlanComponent implements OnInit {
   }
 
   protected readonly sessionStorage = sessionStorage;
+
+  goToHome() {
+    this.router.navigate(['home']);
+  }
 }

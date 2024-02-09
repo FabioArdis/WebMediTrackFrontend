@@ -1,0 +1,39 @@
+.toolBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolBar .example-toolbar-title {
+  flex: 1;
+}
+
+.toolBar button {
+  margin-left: auto;
+}
+
+.container {
+  display: flex;
+}
+
+.mat-list {
+  margin: 10px; /* Aggiunge margini per separare la lista dagli altri contenuti */
+  padding: 10px; /* Aggiunge padding per uno spazio interno */
+  border: 3px solid   ; /* Aggiunge un bordo per evidenziare la lista */
+  border-radius: 5px; /* Aggiunge un bordo arrotondato */
+  background-color: #fff;
+  display: inline-block; /* Imposta la card come blocco in linea */
+}
+
+.mat-list-item {
+  padding: 10px; /* Aggiunge spazio interno ai singoli elementi della lista */
+  font-size: 16px; /* Aumenta la dimensione del testo */
+  border: 2px solid ;
+  border-radius: 10px; /* Arrotonda gli angoli */
+  margin-bottom: 10px; /* Aggiunge margine inferiore per separare gli elementi */
+  box-sizing: border-box; /* Include il bordo nella larghezza */
+}
+
+
+
+

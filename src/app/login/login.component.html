@@ -1,4 +1,4 @@
-<button (click)="goToHome()">Home</button>
+<!--button (click)="goToHome()">Home</button>
 <form (ngSubmit)="loginUser()">
     <div class="form-group">
         <label for="username">Username:</label>
@@ -8,10 +8,51 @@
         <label for="pwd">Password:</label>
         <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="password"  [(ngModel)]="userData.password">
     </div>
+
+
     <div id="doctorFields" class="form-group" style="display:none;">
         <button type="submit" class="btn btn-primary">Login as a doctor</button>
     </div>
     <div id="patientFields" class="form-group" style="display:none;">
         <button type="submit" class="btn btn-primary">Login as a patient</button>
     </div>
+</form-->
+
+<mat-toolbar color="primary" class="toolBar">
+  <span class="example-toolbar-title">Meditrack</span>
+
+  <button mat-icon-button color="link" (click)="goToHome()" >
+    <mat-icon>home</mat-icon>
+  </button>
+
+</mat-toolbar>
+
+<form (ngSubmit)="loginUser()" class="page-container ">
+  <mat-form-field >
+    <mat-label>Username</mat-label>
+    <input matInput type="text" class="form-control" placeholder="Enter username" id="username" name="username" [(ngModel)]="userData.username">
+  </mat-form-field>
+
+  <mat-form-field >
+    <mat-label>Password</mat-label>
+    <input matInput type="text" class="form-control" placeholder="Enter password" id="password" name="password" [(ngModel)]="userData.password">
+  </mat-form-field>
+
+    <div id="doctorFields" class="form-group" style="display:none;">
+      <button mat-fab extended="true" color="primary" type="submit" class="btn btn-primary" >
+        <mat-icon>account_circle</mat-icon>
+          login Dottore
+      </button>
+    </div>
+
+    <div id="patientFields" class="form-group" style="display:none;">
+      <button mat-fab extended="true" color="primary" type="submit" class="btn btn-primary" >
+        <mat-icon>account_circle</mat-icon>
+          login paziente
+      </button>
+    </div>
+
 </form>
+
+
+

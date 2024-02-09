@@ -1,32 +1,46 @@
-<button (click)="goToHome()">Home</button>
-<form (ngSubmit)="searchMedicine()">
-  <div class="input-group">
-    <label for="name">Medicine</label><input type="text" class="form-control" id="name" name="name" placeholder="Insert medicine name"  required [(ngModel)]="medName">
-    <div class="input-group-append">
-      <button type="submit" class="btn btn-primary">Search</button>
-    </div>
-  </div>
-</form>
+<div class="page-container">
+  <mat-toolbar color="primary" class="toolBar">
+    <span class="example-toolbar-title">Meditrack</span>
 
-<div *ngIf="searchMedicineList != null" class="d-flex flex-wrap">
-  <div *ngFor="let med of searchMedicineList" [attr.id]="'r' + med.id" class="card mb-3 mr-2" style="max-width: 300px;">
-    <div class="card-body">
-      <div *ngIf="med">
-        <h2>Medicine Details</h2>
-        <p>Id: {{med.id}}</p>
-        <p>Name: {{med.name}}</p>
-        <p>Dosage: {{med.dosage}}</p>
-        <p>Manufacturer: {{med.manufacturer}}</p>
-
-        <div class="d-flex flex-wrap">
-          <form action="/addMedicine" method="post">
-            <button type="submit" class="btn btn-success mr-2">Add medicine</button>
-          </form>
-          <form action="/removeMedicine" method="post">
-            <button type="submit" class="btn btn-danger">Remove medicine</button>
-          </form>
-        </div>
+    <button mat-icon-button color="link" (click)="goToHome()" >
+      <mat-icon>home</mat-icon>
+    </button>
+  </mat-toolbar>
+  <!--form (ngSubmit)="searchMedicine()">
+    <div class="input-group">
+      <label for="name">Medicine</label><input type="text" class="form-control" id="name" name="name" placeholder="Insert medicine name"  required [(ngModel)]="medName">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary">Search</button>
       </div>
+    </div>
+  </form-->
+
+  <form (ngSubmit)="searchMedicine()" class="page-container ">
+    <mat-form-field >
+      <mat-label>Medicine</mat-label>
+      <input matInput type="text" class="form-control" placeholder="Inserire Nome Farmaco " id="medName" name="medName" required [(ngModel)]="medName">
+    </mat-form-field>
+    <button  mat-raised-button type="submit" color="primary" >
+      <mat-icon> search </mat-icon>
+      Search
+    </button>
+  </form>
+
+  <div *ngIf="searchMedicineList != null">
+    <div *ngFor="let med of searchMedicineList" [attr.id]="'r' + med.id" class="d-flex flex-wrap">
+
+      <mat-card class="example-card">
+        <mat-card-subtitle> {{med.name}} </mat-card-subtitle>
+        <mat-card-content>
+
+          <p> Name : {{med.name}}</p>
+          <p> Dosage: {{med.dosage}}</p>
+          <p> Manufacturer : {{med.manufacturer}}</p>
+
+          <mat-divider></mat-divider>
+        </mat-card-content>
+      </mat-card>
+
     </div>
   </div>
 </div>

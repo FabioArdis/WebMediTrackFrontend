@@ -1,0 +1,27 @@
+.page-container {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.column-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.toolBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolBar .example-toolbar-title {
+  flex: 1;
+}
+
+.toolBar button {
+  margin-left: auto; /* Sposta il pulsante tutto a destra */
+}

@@ -9,10 +9,15 @@ import {Router} from "@angular/router";
 })
 export class CreatePlanComponent implements OnInit {
   planData : any = {};
+  user : any ;
+
+  displayedColumns: string[] = ['username', 'name', 'surname', 'cf', 'tscode'];
+
 
   constructor(private userService : UserService, private router : Router) {
   }
   ngOnInit(): void {
+    this.user = this.userService.getUser();
     if (sessionStorage.getItem("userType") === "patient") {
       const patientFields = document.getElementById("doctorFields")
       if (patientFields)
@@ -35,4 +40,5 @@ export class CreatePlanComponent implements OnInit {
   goToHome() {
     this.router.navigate(['']);
   }
+
 }

@@ -1,81 +1,99 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <h2>Informazioni generali del piano</h2>
+<div class="page-container">
+  <mat-toolbar color="primary" class="toolBar">
+    <span class="example-toolbar-title">Meditrack</span>
+
+    <button mat-icon-button color="link" (click)="goToHome()" >
+      <mat-icon>home</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+    <div class="row">
+      <h1>Informazioni generali del piano</h1>
       <form (ngSubmit)="saveGeneralInfo()">
-        <div class="form-group">
-          <label for="planName">Name:</label>
-          <input type="text" class="form-control" placeholder="Enter plan's name" id="planName" name="planName" [(ngModel)]="planData.name" [value]="plan.name">
-        </div>
-        <div class="form-group">
-          <label for="planLength">Length in days:</label>
-          <input type="number" class="form-control" placeholder="Enter plan's length in days" id="planLength" name="planLength" [(ngModel)]="planData.length" [value]="plan.length">
-        </div>
-        <div class="form-group">
-          <label for="planType">Type:</label>
-          <input type="text" class="form-control" placeholder="Enter plan's type" id="planType" name="planType" [(ngModel)]="planData.type" [value]="plan.type">
-        </div>
+      <div class="form-group">
+        <mat-form-field >
+          <mat-label>Plan Name:</mat-label>
+          <input matInput type="text" class="form-control" placeholder="Inserisci Plan Name" id="planName" name="planName" required [(ngModel)]="planData.name" [value]="plan.name">
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>Length in days:</mat-label>
+          <input matInput type="number" class="form-control" placeholder="Inserisci Plan's lenght " id="planLength" name="planLength" required [(ngModel)]="planData.planLength" [value]="plan.length">
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>Tipo Di Piano Teraupetico</mat-label>
+          <input matInput type="text" class="form-control" placeholder="Inserisci Tipo Piano " id="planType" name="planType" required [(ngModel)]="planData.type" [value]="plan.type">
+        </mat-form-field>
+      </div>
 
-        <button type="submit">Update plan</button>
-      </form>
+      <button mat-raised-button type="submit" color="primary">Update plan</button>
+    </form>
 
+      <div class="table-container">
+        <h2> Medicine nel piano </h2>
+        <table mat-table  [dataSource]="plan.medicines">
 
-      <h3>Medicine incluse nel piano:</h3>
-      <table>
-        <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Dosaggio</th>
-          <th>Produttore</th>
-          <th>Azione</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let medicine of plan.medicines">
-          <td>{{ medicine.id }}</td>
-          <td>{{ medicine.name }}</td>
-          <td>{{ medicine.dosage }}</td>
-          <td>{{ medicine.manufacturer }}</td>
-          <td>
-            <button (click)="removeMedicine(medicine)">Remove from plan</button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let medicine"> {{ medicine.id }} </td>
+          </ng-container>
 
-    <button (click)="updatePlan()">Update plan</button>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let medicine"> {{ medicine.name }} </td>
+          </ng-container>
 
-    <div class="col-md-6">
+          <ng-container matColumnDef="dosage">
+            <th mat-header-cell *matHeaderCellDef> Dosage </th>
+            <td mat-cell *matCellDef="let medicine"> {{ medicine.dosage }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="manufacturer">
+            <th mat-header-cell *matHeaderCellDef> Manufacturer </th>
+            <td mat-cell *matCellDef="let medicine"> {{ medicine.manufacturer }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let medicine">
+             <button mat-raised-button (click)="removeMedicine(medicine)" color="warn">Delete</button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="medicineColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: medicineColumns;"></tr>
+        </table>
+      </div>
+
+      <button mat-raised-button color ="primary" class="btn btn-success mr-2" (click)="updatePlan()">Update medicines</button>
+
       <h2>Ricerca e informazioni medicinale</h2>
-      <input type="text" placeholder="Search Medicine" name="searchText" #searchBox>
-      <button class="primary" type="button" (click)="searchMedicine(searchBox.value)">Search</button>
 
+      <mat-form-field>
+        <input matInput type="text" placeholder="Search Medicine" name="searchText" #searchBox>
+      </mat-form-field>
 
+      <button mat-raised-button color ="primary" class="btn btn-success mr-2" (click)="searchMedicine(searchBox.value)">Search</button>
 
-      <table>
-        <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Dosaggio</th>
-          <th>Produttore</th>
-          <th>Azione</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let medicine of searchResults">
-          <td>{{ medicine.id }}</td>
-          <td>{{ medicine.name }}</td>
-          <td>{{ medicine.dosage }}</td>
-          <td>{{ medicine.manufacturer }}</td>
-          <td>
-            <button (click)="addMedicineToPlan(medicine)">Aggiungi al piano</button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+      <div *ngIf="searchResults != null">
+        <div *ngFor="let med of searchResults" [attr.id]="'r' + med.id" class="d-flex flex-wrap">
+
+          <mat-card class="example-card">
+            <mat-card-subtitle> {{med.name}} </mat-card-subtitle>
+            <mat-card-content>
+
+              <p> Name : {{med.name}}</p>
+              <p> Dosage: {{med.dosage}}</p>
+              <p> Manufacturer : {{med.manufacturer}}</p>
+
+              <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button color ="primary" class="btn btn-success mr-2" (click)="addMedicineToPlan(med)">Add medicine</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
 
     </div>
   </div>

@@ -1,0 +1,39 @@
+.toolBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolBar .example-toolbar-title {
+  flex: 1;
+}
+
+.toolBar button {
+  margin-left: auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px; /* Puoi regolare lo spazio tra i campi */
+}
+
+.container {
+  display: flex; /* Utilizza il layout flessibile */
+  justify-content: space-between; /* Allinea gli elementi al massimo della larghezza disponibile */
+  margin: 20px auto 0; /* Applica margini superiori e inferiori a 20px e centra il contenitore orizzontalmente */
+  max-width: 1200px; /* Imposta una larghezza massima per il contenitore */
+}
+
+.form-container, .table-container {
+  width: 45%; /* Imposta la larghezza desiderata per il form e la tabella */
+}
+
+.form-container {
+  margin-right: 20px; /* Aggiunge spazio tra il form e la tabella */
+}
+
+.mat-form-field {
+  width: 100%; /* Imposta la larghezza dei campi di input al 100% del contenitore */
+  margin-bottom: 20px;
+}

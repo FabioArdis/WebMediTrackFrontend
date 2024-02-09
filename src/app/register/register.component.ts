@@ -47,6 +47,7 @@ export class RegisterComponent implements OnInit {
   }
 
   protected readonly sessionStorage = sessionStorage;
+  secondFormGroup: any;
 
   goToHome() {
     this.router.navigate(['']);

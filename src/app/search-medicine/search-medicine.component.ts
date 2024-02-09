@@ -13,6 +13,7 @@ export class SearchMedicineComponent {
 
   constructor(private searchService : SearchService, private router : Router) {}
   searchMedicine() {
+    console.log(this.medName)
     this.searchService.searchMedicine(this.medName).subscribe({
       next: response => {
         this.searchMedicineList = response;
