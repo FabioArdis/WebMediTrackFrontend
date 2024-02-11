@@ -57,6 +57,38 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
 }
 
+.plans-card {
+  width: 300px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 
+.plans-container {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.mat-card-actions button.btn-success {
+  margin-right: 10px;
+}
 
+.plan-button {
+  margin-left: 10px;
+}
+
+table {
+  width: 50%;
+}
+
+.doctors-table {
+  border-radius: 10px; /* Imposta il valore desiderato per l'arrotondamento degli angoli della tabella */
+  overflow: hidden; /* Assicura che gli angoli siano arrotondati correttamente */
+}
+
+.doctors-table .mat-header-cell, .custom-mat-table .mat-cell {
+  border-radius: 10px; /* Imposta il valore desiderato per l'arrotondamento degli angoli delle celle */
+}
+
+.doctors-table .mat-header-row, .custom-mat-table .mat-row {
+  border-radius: 10px; /* Imposta il valore desiderato per l'arrotondamento degli angoli delle righe */
+}

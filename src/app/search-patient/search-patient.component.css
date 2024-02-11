@@ -64,3 +64,7 @@ p {
   margin: 5px 0; /* Aggiunge margine sopra e sotto a ciascun paragrafo */
   font-size: 16px; /* Aumenta la dimensione del testo */
 }
+
+.patient-button {
+  margin-left: 10px;
+}

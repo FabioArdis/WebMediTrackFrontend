@@ -33,6 +33,7 @@ export class CreatePlanComponent implements OnInit {
 
   createPlan() {
     this.userService.addPlan(this.planData);
+    this.router.navigate(['']);
   }
 
   protected readonly sessionStorage = sessionStorage;

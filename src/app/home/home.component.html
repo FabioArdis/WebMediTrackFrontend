@@ -7,11 +7,13 @@
   <mat-drawer #drawer class="example-sidenav" mode="side" style="background: radial-gradient(circle, #e0e0e0, #90caf9);">
 
     <div class="logo-container">
-      <img src="assets/1.png" alt ="Logo dell'Applicazione">
+      <img src="assets/1-edit.png" alt ="Logo dell'Applicazione">
     </div>
 
     <div class="example-button-row button" *ngIf="!user">
-
+      <div class="container" >
+        <h3>Welcome. Login or register.</h3>
+      </div>
       <button mat-raised-button color="primary" (click)="register('doc')">
         <mat-icon>badge</mat-icon>
         Registrazione dottori
@@ -29,7 +31,9 @@
     </div>
 
     <div class="example-button-row button" *ngIf="user">
-
+      <div class="container" >
+        <h3>Welcome, {{user.name}}.</h3>
+      </div>
       <div *ngIf="sessionStorage.getItem('userType') == 'doctor'">
         <button mat-raised-button color="primary" (click)="searchPatient()">Search patient
           <mat-icon>search</mat-icon>

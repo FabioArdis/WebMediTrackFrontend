@@ -40,7 +40,7 @@
 
   <div class="table-container" *ngIf="sessionStorage.getItem('userType') === 'doctor'">
       <h2> Pazienti Attualmente Disponibili </h2>
-      <table mat-table  [dataSource]="user.patients">
+      <table mat-table  [dataSource]="user.patients" class="doctors-table">
 
         <ng-container matColumnDef="username">
           <th mat-header-cell *matHeaderCellDef> Username </th>
