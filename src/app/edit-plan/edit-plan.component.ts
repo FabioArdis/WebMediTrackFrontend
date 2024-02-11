@@ -123,6 +123,6 @@ export class EditPlanComponent implements OnInit {
   protected readonly sessionStorage = sessionStorage;
 
   goToHome() {
-    this.router.navigate(['home']);
+    this.router.navigate(['']);
   }
 }

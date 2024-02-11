@@ -1,3 +1,4 @@
+/* tool bar */
 .toolBar {
   display: flex;
   justify-content: space-between;
@@ -12,8 +13,21 @@
   margin-left: auto;
 }
 
+/* tool bar -------------------------------*/
+
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Divide la larghezza della pagina in due colonne di larghezza uguale */
+  gap:5px; /* Aggiunge spazio tra la lista e la tabella */
+  align-items: flex-start; /* Allinea gli elementi all'inizio delle colonne */
+}
+
+.list-container, .table-container {
+  flex: 1;
+}
+
+.table-container {
+  margin-right: 20px; /* Aggiungi spazio tra la lista e la tabella */
 }
 
 .mat-list {
@@ -28,12 +42,53 @@
 .mat-list-item {
   padding: 10px; /* Aggiunge spazio interno ai singoli elementi della lista */
   font-size: 16px; /* Aumenta la dimensione del testo */
-  border: 2px solid ;
+  border: 2px solid #000;
   border-radius: 10px; /* Arrotonda gli angoli */
   margin-bottom: 10px; /* Aggiunge margine inferiore per separare gli elementi */
   box-sizing: border-box; /* Include il bordo nella larghezza */
 }
 
+/* Stile per le carte */
+.mat-card {
+  width: 300px; /* Imposta la larghezza desiderata per le card */
+  margin: 10px; /* Aggiunge spazio tra le card */
+  border-radius: 10px; /* Arrotonda gli angoli delle card */
+  overflow: auto; /* Aggiunge una barra di scorrimento verticale se il contenuto supera l'altezza specificata */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
+}
 
+.plans-card {
+  width: 300px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 
+.plans-container {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.mat-card-actions button.btn-success {
+  margin-right: 10px;
+}
+
+.plan-button {
+  margin-left: 10px;
+}
+
+table {
+  width: 50%;
+}
+
+.doctors-table {
+  border-radius: 10px; /* Imposta il valore desiderato per l'arrotondamento degli angoli della tabella */
+  overflow: hidden; /* Assicura che gli angoli siano arrotondati correttamente */
+}
+
+.doctors-table .mat-header-cell, .custom-mat-table .mat-cell {
+  border-radius: 10px; /* Imposta il valore desiderato per l'arrotondamento degli angoli delle celle */
+}
+
+.doctors-table .mat-header-row, .custom-mat-table .mat-row {
+  border-radius: 10px; /* Imposta il valore desiderato per l'arrotondamento degli angoli delle righe */
+}

@@ -37,3 +37,38 @@
   width: 100%; /* Imposta la larghezza dei campi di input al 100% del contenitore */
   margin-bottom: 20px;
 }
+
+.update-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search-medicine-button {
+  height:55px;
+  margin-left:10px;
+  margin-top:-5px;
+}
+
+.medicines-table {
+  border-radius: 10px; /* Imposta il valore desiderato per l'arrotondamento degli angoli della tabella */
+  overflow: hidden; /* Assicura che gli angoli siano arrotondati correttamente */
+}
+
+.medicines-table .mat-header-cell, .custom-mat-table .mat-cell {
+  border-radius: 10px; /* Imposta il valore desiderato per l'arrotondamento degli angoli delle celle */
+}
+
+.medicines-table .mat-header-row, .custom-mat-table .mat-row {
+  border-radius: 10px; /* Imposta il valore desiderato per l'arrotondamento degli angoli delle righe */
+}
+
+.medicine-card {
+  width: 300px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.medicine-container {
+  display: flex;
+  flex-wrap: wrap;
+}

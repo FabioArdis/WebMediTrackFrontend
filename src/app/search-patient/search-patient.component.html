@@ -8,14 +8,13 @@
 
   </mat-toolbar>
 
-  <h1> Inserire Username del paziente desiderato  </h1>
-
-  <form (ngSubmit)="searchPatient()" class="page-container ">
+  <form (ngSubmit)="searchPatient()" class="search-form">
+    <h2>Insert the patient's username</h2>
     <mat-form-field >
       <mat-label>Username</mat-label>
       <input matInput type="text" class="form-control" placeholder="Enter username" id="patName" name="patName" required [(ngModel)]="patName">
     </mat-form-field>
-    <button  mat-raised-button type="submit" color="primary" >
+    <button  mat-raised-button type="submit" color="primary" class="search-patient-button">
       <mat-icon> search </mat-icon>
       Search
     </button>
@@ -36,8 +35,8 @@
         <mat-divider></mat-divider>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color ="primary" class="btn btn-success mr-2" (click)="addPatient()">Add patient</button>
-        <button mat-raised-button color = "warn"  class="btn btn-danger" (click)="removePatient()">Remove patient</button>
+        <button mat-raised-button color ="primary" class="patient-button" (click)="addPatient()">Add patient</button>
+        <button mat-raised-button color = "warn"  class="patient-button" (click)="removePatient()">Remove patient</button>
       </mat-card-actions>
     </mat-card>
 

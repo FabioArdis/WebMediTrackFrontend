@@ -64,3 +64,14 @@ p {
   margin: 5px 0; /* Aggiunge margine sopra e sotto a ciascun paragrafo */
   font-size: 16px; /* Aumenta la dimensione del testo */
 }
+
+.search-form {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.search-medicine-button {
+  height:55px;
+  margin-left:10px;
+  margin-top:-20px;
+}

@@ -8,123 +8,120 @@
 
   </mat-toolbar>
 
-  <div *ngIf="user">
+  <!-- Se l'utente esiste -->
+  <div *ngIf="user" class="container">
+    <!-- Lista dati utente -->
+    <div class = "list-container">
+        <mat-list role="list" class="mat-list" >
+          <h1>User info</h1>
 
-    <div class="container">
-      <div class="flex-container">
-        <h1>User info</h1>
-        <button mat-raised-button color="primary" class="btn btn-success mr-2" (click)="updateUser()">
-          Update data
-          <mat-icon>home</mat-icon>
-        </button>
-        <div style="flex: 1; padding: 10px;">
-          <mat-list role="list" class="mat-list" >
-            <mat-list-item class = "mat-list-item" role="listitem">Nome: {{ user.name }}</mat-list-item>
-            <mat-list-item class = "mat-list-item" role="listitem">Cognome: {{ user.surname}}</mat-list-item>
-            <mat-list-item class = "mat-list-item" role="listitem">E-mail: {{ user.email }}</mat-list-item>
-            <mat-list-item class = "mat-list-item" role="listitem">Anno di nascita: {{ user.birthDate }}</mat-list-item>
+          <!-- Dati in comune -->
+          <mat-list-item class = "mat-list-item" role="listitem">Name: {{ user.name }}</mat-list-item>
+          <mat-list-item class = "mat-list-item" role="listitem">Surname: {{ user.surname}}</mat-list-item>
+          <mat-list-item class = "mat-list-item" role="listitem">E-mail: {{ user.email }}</mat-list-item>
+          <mat-list-item class = "mat-list-item" role="listitem">Birth date: {{ user.birthDate }}</mat-list-item>
+          <mat-list-item class = "mat-list-item" role="listitem">Codice Fiscale: {{ user.cf }}</mat-list-item>
+
+          <!-- Dati esclusivi dottore -->
+          <ng-container  *ngIf="sessionStorage.getItem('userType') == 'doctor'">
+            <mat-list-item class = "mat-list-item" role="listitem">Doctor ID: {{ user.doctorId }}</mat-list-item>
+            <mat-list-item class = "mat-list-item" role="listitem">Specializzazione: {{ user.spec }}</mat-list-item>
+            <mat-list-item class = "mat-list-item" role="listitem">Availability: {{ user.docAvailTime }}</mat-list-item>
             <mat-list-item class = "mat-list-item" role="listitem">Codice Fiscale: {{ user.cf }}</mat-list-item>
+          </ng-container>
 
-            <ng-container  *ngIf="sessionStorage.getItem('userType') == 'doctor'">
-              <mat-list-item class = "mat-list-item" role="listitem">Doctor ID: {{ user.doctorId }}</mat-list-item>
-              <mat-list-item class = "mat-list-item" role="listitem">Specializzazione: {{ user.spec }}</mat-list-item>
-              <mat-list-item class = "mat-list-item" role="listitem">Availability: {{ user.docAvailTime }}</mat-list-item>
-              <mat-list-item class = "mat-list-item" role="listitem">Codice Fiscale: {{ user.cf }}</mat-list-item>
-            </ng-container>
+          <!-- Dati esclusivi paziente -->
+          <ng-container *ngIf="sessionStorage.getItem('userType') == 'patient'" >
+            <mat-list-item class = "mat-list-item" role="listitem">Tessera Sanitaria code: {{user.tscode}}</mat-list-item>
+          </ng-container>
 
-            <ng-container *ngIf="sessionStorage.getItem('userType') == 'patient'" >
-              <mat-list-item class = "mat-list-item" role="listitem">Tessera Sanitaria code: {{user.tscode}}</mat-list-item>
-            </ng-container>
+          <button mat-raised-button color="primary" (click)="updateUser()">
+            Update data
+            <mat-icon>home</mat-icon>
+          </button>
+        </mat-list>
+    </div>
 
-          </mat-list>
-          <div *ngIf="sessionStorage.getItem('userType') == 'doctor'">
+    <!-- Dati extra dottore -->
+    <div *ngIf="sessionStorage.getItem('userType') == 'doctor'" class="patient-container">
+      <div class="table-container">
+        <h1 style="margin-top:10px">List of patients:</h1>
 
-            <h1>List of patients:</h1>
+        <table mat-table [dataSource]="user.patients" class="doctors-table">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+          <ng-container matColumnDef="surname">
+            <th mat-header-cell *matHeaderCellDef> Surname </th>
+            <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+          </ng-container>
+          <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef> Username </th>
+            <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+          </ng-container>
+          <ng-container matColumnDef="cf">
+            <th mat-header-cell *matHeaderCellDef> Codice Fiscale </th>
+            <td mat-cell *matCellDef="let element"> {{element.cf}} </td>
+          </ng-container>
 
-            <table mat-table [dataSource]="user.patients" class="mat-elevation-z8 demo-table">
+          <tr mat-header-row *matHeaderRowDef="patientColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: patientColumns;"></tr>
+        </table>
+      </div>
+    </div>
 
-              <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-              </ng-container>
+    <!-- Dati extra paziente -->
+    <div *ngIf="sessionStorage.getItem('userType') == 'patient'">
 
+      <h1 style="margin-top:10px">Lista Piani</h1>
 
-              <ng-container matColumnDef="surname">
-                <th mat-header-cell *matHeaderCellDef> Surname </th>
-                <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
-              </ng-container>
+      <div class="plans-container" *ngIf="user.plans">
+        <div *ngFor="let plan of user.plans" [attr.id]="'r' + plan.username">
+          <mat-card class="plans-card">
+            <mat-card-content>
+              <p> Name : {{plan.name}}</p>
+              <p> Type: {{plan.type}}</p>
+              <p> Length : {{plan.length}} days </p>
 
+              <mat-divider></mat-divider>
 
-              <ng-container matColumnDef="username">
-                <th mat-header-cell *matHeaderCellDef> Username </th>
-                <td mat-cell *matCellDef="let element"> {{element.username}} </td>
-              </ng-container>
-
-              <ng-container matColumnDef="cf">
-                <th mat-header-cell *matHeaderCellDef> Codice Fiscale </th>
-                <td mat-cell *matCellDef="let element"> {{element.cf}} </td>
-              </ng-container>
-
-              <tr mat-header-row *matHeaderRowDef="patientColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: patientColumns;"></tr>
-            </table>
-          </div>
-        </div>
-
-        <div style="flex: 1; padding: 10px;">
-          <div *ngIf="sessionStorage.getItem('userType') == 'patient'">
-            <h1>List of plans</h1>
-
-            <div *ngIf="user.plans">
-              <div *ngFor="let plan of user.plans" [attr.id]="'r' + plan.username">
-
-                <mat-card class="example-card">
-                  <mat-card-content>
-                    <p> Name : {{plan.name}}</p>
-                    <p> type: {{plan.type}}</p>
-                    <p> lenght : {{plan.lenght}}</p>
-                    <mat-divider></mat-divider>
-                    <mat-card-actions>
-                      <button mat-raised-button class="btn btn-success mr-2" color="primary" (click)="editPlan(plan.id)">Modifica</button>
-                      <button mat-raised-button class="btn btn-danger" color="warn" (click)="removePlan(plan.id)">Cancella</button>
-                    </mat-card-actions>
-                  </mat-card-content>
-                </mat-card>
-              </div>
-            </div>
-
-            <h1>List of doctors</h1>
-
-            <table mat-table [dataSource]="user.doctors" class="mat-elevation-z8 demo-table">
-
-              <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-              </ng-container>
-
-
-              <ng-container matColumnDef="surname">
-                <th mat-header-cell *matHeaderCellDef> Surname </th>
-                <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
-              </ng-container>
-
-
-              <ng-container matColumnDef="username">
-                <th mat-header-cell *matHeaderCellDef> Username </th>
-                <td mat-cell *matCellDef="let element"> {{element.username}} </td>
-              </ng-container>
-
-              <ng-container matColumnDef="spec">
-                <th mat-header-cell *matHeaderCellDef> Specializzazione </th>
-                <td mat-cell *matCellDef="let element"> {{element.spec}} </td>
-              </ng-container>
-
-              <tr mat-header-row *matHeaderRowDef="doctorColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: doctorColumns;"></tr>
-            </table>
-          </div>
+              <mat-card-actions>
+                <button mat-raised-button class="plan-button" color="primary" (click)="editPlan(plan.id)">Edit</button>
+                <button mat-raised-button class="plan-button" color="warn" (click)="removePlan(plan.id)">Remove</button>
+              </mat-card-actions>
+            </mat-card-content>
+          </mat-card>
         </div>
       </div>
+
+      <h1>List of doctors</h1>
+
+      <table mat-table [dataSource]="user.doctors" class="doctors-table">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="surname">
+          <th mat-header-cell *matHeaderCellDef> Surname </th>
+          <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+        </ng-container>
+        <ng-container matColumnDef="username">
+          <th mat-header-cell *matHeaderCellDef> Username </th>
+          <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+        </ng-container>
+        <ng-container matColumnDef="spec">
+          <th mat-header-cell *matHeaderCellDef> Specialization </th>
+          <td mat-cell *matCellDef="let element"> {{element.spec}} </td>
+        </ng-container>
+        <ng-container matColumnDef="availability">
+          <th mat-header-cell *matHeaderCellDef> Availability </th>
+          <td mat-cell *matCellDef="let element"> {{element.availDocTime}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="doctorColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: doctorColumns;"></tr>
+      </table>
     </div>
   </div>
 </div>

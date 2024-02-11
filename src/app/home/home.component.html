@@ -2,41 +2,54 @@
 <mat-drawer-container class="example-container" style="background: radial-gradient(circle, #e0e0e0, #90caf9);">
 
   <mat-toolbar color="primary">
-    <span class="example-toolbar-title">Meditrack</span>
+    <span class="example-toolbar-title">MediTrack</span>
   </mat-toolbar>
   <mat-drawer #drawer class="example-sidenav" mode="side" style="background: radial-gradient(circle, #e0e0e0, #90caf9);">
 
     <div class="logo-container">
-      <img src="assets/1.png" alt ="Logo dell'Applicazione">
+      <img src="assets/1-edit.png" alt ="Logo dell'Applicazione">
     </div>
 
     <div class="example-button-row button" *ngIf="!user">
-
-      <button mat-raised-button color="primary" (click)="register('doc')">
-        <mat-icon> badge </mat-icon>
-        Registrazione dottori
-      </button>
-      <button mat-raised-button color="primary" (click)="register('pat')"> Registrazione pazienti
+      <div class="container" >
+        <h3>Welcome. Login or register.</h3>
+      </div>
+      <button mat-raised-button color="primary" (click)="register('doc')"> Register as a doctor
         <mat-icon>badge</mat-icon>
       </button>
-      <button mat-raised-button color="primary" (click)="login('doc')"> Login dottori
+      <button mat-raised-button color="primary" (click)="register('pat')"> Register as a patient
+        <mat-icon>badge</mat-icon>
+      </button>
+      <button mat-raised-button color="primary" (click)="login('doc')"> Login as a doctor
         <mat-icon>account_circle</mat-icon>
       </button>
-      <button mat-raised-button color="primary" (click)="login('pat')"> Login pazienti
+      <button mat-raised-button color="primary" (click)="login('pat')"> Login as a patient
         <mat-icon>account_circle</mat-icon>
       </button>
 
     </div>
 
     <div class="example-button-row button" *ngIf="user">
-
-      <div *ngIf="sessionStorage.getItem('userType') == 'doctor'">
-        <button mat-raised-button color="primary" (click)="searchPatient()">Search patient</button>
-        <button mat-raised-button color="primary" (click)="searchMedicine()">Search medicine</button>
+      <div class="container" >
+        <h3>Welcome, {{user.name}}.</h3>
       </div>
-      <button mat-raised-button color="primary" (click)="createPlan()">Create plan</button>
-      <button mat-raised-button color="primary" (click)="userInfo()">Check user info</button>
-      <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+      <div *ngIf="sessionStorage.getItem('userType') == 'doctor'">
+        <button mat-raised-button color="primary" (click)="searchPatient()">Search patient
+          <mat-icon>search</mat-icon>
+        </button>
+        <button mat-raised-button color="primary" (click)="searchMedicine()">Search medicine
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+      <button mat-raised-button color="primary" (click)="createPlan()">Create plan
+        <mat-icon>create</mat-icon>
+      </button>
+      <button mat-raised-button color="primary" (click)="userInfo()">Check user info
+        <mat-icon>perm_identity</mat-icon>
+      </button>
+      <button mat-raised-button color="primary" (click)="logout()">Logout
+        <mat-icon>input</mat-icon>
+      </button>
     </div>
 
 
@@ -46,7 +59,7 @@
 
     <button mat-fab extended="true" color="primary" (click)="drawer.toggle()">
       <mat-icon>home</mat-icon>
-      Clicca qui per iniziare
+      Click here to start
     </button>
 
   </div>
