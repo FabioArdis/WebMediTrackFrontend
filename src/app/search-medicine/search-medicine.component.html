@@ -7,12 +7,13 @@
     </button>
   </mat-toolbar>
 
-  <form (ngSubmit)="searchMedicine()" class="page-container ">
+  <form (ngSubmit)="searchMedicine()" class="search-form">
+    <h2>Insert the medicine's name</h2>
     <mat-form-field >
       <mat-label>Medicine</mat-label>
       <input matInput type="text" class="form-control" placeholder="Inserire Nome Farmaco " id="medName" name="medName" required [(ngModel)]="medName">
     </mat-form-field>
-    <button  mat-raised-button type="submit" color="primary" >
+    <button  mat-raised-button type="submit" color="primary" class="search-medicine-button">
       <mat-icon> search </mat-icon>
       Search
     </button>
@@ -26,7 +27,7 @@
         <mat-card-content>
 
           <p> Name : {{med.name}}</p>
-          <p> Dosage: {{med.dosage}}</p>
+          <p> Dosage: {{med.dosage}}mg</p>
           <p> Manufacturer : {{med.manufacturer}}</p>
 
           <mat-divider></mat-divider>

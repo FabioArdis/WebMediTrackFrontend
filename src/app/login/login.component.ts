@@ -52,4 +52,6 @@ export class LoginComponent implements OnInit {
   goToHome() {
     this.router.navigate(['']);
   }
+
+    protected readonly sessionStorage = sessionStorage;
 }

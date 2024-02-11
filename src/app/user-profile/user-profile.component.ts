@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   searchPlansList : any = {};
 
   patientColumns = ['name', 'surname', 'username', 'cf'];
-  doctorColumns = ['name', 'surname', 'username', 'spec'];
+  doctorColumns = ['name', 'surname', 'username', 'spec', 'availability'];
 
   constructor(private userService: UserService, private router: Router) {
   }

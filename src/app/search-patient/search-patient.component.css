@@ -68,3 +68,14 @@ p {
 .patient-button {
   margin-left: 10px;
 }
+
+.search-form {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.search-patient-button {
+  height:55px;
+  margin-left:10px;
+  margin-top:-20px;
+}

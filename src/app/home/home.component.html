@@ -2,7 +2,7 @@
 <mat-drawer-container class="example-container" style="background: radial-gradient(circle, #e0e0e0, #90caf9);">
 
   <mat-toolbar color="primary">
-    <span class="example-toolbar-title">Meditrack</span>
+    <span class="example-toolbar-title">MediTrack</span>
   </mat-toolbar>
   <mat-drawer #drawer class="example-sidenav" mode="side" style="background: radial-gradient(circle, #e0e0e0, #90caf9);">
 
@@ -14,17 +14,16 @@
       <div class="container" >
         <h3>Welcome. Login or register.</h3>
       </div>
-      <button mat-raised-button color="primary" (click)="register('doc')">
-        <mat-icon>badge</mat-icon>
-        Registrazione dottori
-      </button>
-      <button mat-raised-button color="primary" (click)="register('pat')"> Registrazione pazienti
+      <button mat-raised-button color="primary" (click)="register('doc')"> Register as a doctor
         <mat-icon>badge</mat-icon>
       </button>
-      <button mat-raised-button color="primary" (click)="login('doc')"> Login dottori
+      <button mat-raised-button color="primary" (click)="register('pat')"> Register as a patient
+        <mat-icon>badge</mat-icon>
+      </button>
+      <button mat-raised-button color="primary" (click)="login('doc')"> Login as a doctor
         <mat-icon>account_circle</mat-icon>
       </button>
-      <button mat-raised-button color="primary" (click)="login('pat')"> Login pazienti
+      <button mat-raised-button color="primary" (click)="login('pat')"> Login as a patient
         <mat-icon>account_circle</mat-icon>
       </button>
 
@@ -60,7 +59,7 @@
 
     <button mat-fab extended="true" color="primary" (click)="drawer.toggle()">
       <mat-icon>home</mat-icon>
-      Clicca qui per iniziare
+      Click here to start
     </button>
 
   </div>

@@ -16,10 +16,10 @@
           <h1>User info</h1>
 
           <!-- Dati in comune -->
-          <mat-list-item class = "mat-list-item" role="listitem">Nome: {{ user.name }}</mat-list-item>
-          <mat-list-item class = "mat-list-item" role="listitem">Cognome: {{ user.surname}}</mat-list-item>
+          <mat-list-item class = "mat-list-item" role="listitem">Name: {{ user.name }}</mat-list-item>
+          <mat-list-item class = "mat-list-item" role="listitem">Surname: {{ user.surname}}</mat-list-item>
           <mat-list-item class = "mat-list-item" role="listitem">E-mail: {{ user.email }}</mat-list-item>
-          <mat-list-item class = "mat-list-item" role="listitem">Anno di nascita: {{ user.birthDate }}</mat-list-item>
+          <mat-list-item class = "mat-list-item" role="listitem">Birth date: {{ user.birthDate }}</mat-list-item>
           <mat-list-item class = "mat-list-item" role="listitem">Codice Fiscale: {{ user.cf }}</mat-list-item>
 
           <!-- Dati esclusivi dottore -->
@@ -81,14 +81,14 @@
           <mat-card class="plans-card">
             <mat-card-content>
               <p> Name : {{plan.name}}</p>
-              <p> type: {{plan.type}}</p>
-              <p> length : {{plan.length}} giorni </p>
+              <p> Type: {{plan.type}}</p>
+              <p> Length : {{plan.length}} days </p>
 
               <mat-divider></mat-divider>
 
               <mat-card-actions>
-                <button mat-raised-button class="plan-button" color="primary" (click)="editPlan(plan.id)">Modifica</button>
-                <button mat-raised-button class="plan-button" color="warn" (click)="removePlan(plan.id)">Cancella</button>
+                <button mat-raised-button class="plan-button" color="primary" (click)="editPlan(plan.id)">Edit</button>
+                <button mat-raised-button class="plan-button" color="warn" (click)="removePlan(plan.id)">Remove</button>
               </mat-card-actions>
             </mat-card-content>
           </mat-card>
@@ -111,8 +111,12 @@
           <td mat-cell *matCellDef="let element"> {{element.username}} </td>
         </ng-container>
         <ng-container matColumnDef="spec">
-          <th mat-header-cell *matHeaderCellDef> Specializzazione </th>
+          <th mat-header-cell *matHeaderCellDef> Specialization </th>
           <td mat-cell *matCellDef="let element"> {{element.spec}} </td>
+        </ng-container>
+        <ng-container matColumnDef="availability">
+          <th mat-header-cell *matHeaderCellDef> Availability </th>
+          <td mat-cell *matCellDef="let element"> {{element.availDocTime}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="doctorColumns"></tr>
