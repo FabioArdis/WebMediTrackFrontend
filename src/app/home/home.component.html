@@ -13,7 +13,7 @@
     <div class="example-button-row button" *ngIf="!user">
 
       <button mat-raised-button color="primary" (click)="register('doc')">
-        <mat-icon> badge </mat-icon>
+        <mat-icon>badge</mat-icon>
         Registrazione dottori
       </button>
       <button mat-raised-button color="primary" (click)="register('pat')"> Registrazione pazienti
@@ -31,12 +31,22 @@
     <div class="example-button-row button" *ngIf="user">
 
       <div *ngIf="sessionStorage.getItem('userType') == 'doctor'">
-        <button mat-raised-button color="primary" (click)="searchPatient()">Search patient</button>
-        <button mat-raised-button color="primary" (click)="searchMedicine()">Search medicine</button>
+        <button mat-raised-button color="primary" (click)="searchPatient()">Search patient
+          <mat-icon>search</mat-icon>
+        </button>
+        <button mat-raised-button color="primary" (click)="searchMedicine()">Search medicine
+          <mat-icon>search</mat-icon>
+        </button>
       </div>
-      <button mat-raised-button color="primary" (click)="createPlan()">Create plan</button>
-      <button mat-raised-button color="primary" (click)="userInfo()">Check user info</button>
-      <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+      <button mat-raised-button color="primary" (click)="createPlan()">Create plan
+        <mat-icon>create</mat-icon>
+      </button>
+      <button mat-raised-button color="primary" (click)="userInfo()">Check user info
+        <mat-icon>perm_identity</mat-icon>
+      </button>
+      <button mat-raised-button color="primary" (click)="logout()">Logout
+        <mat-icon>input</mat-icon>
+      </button>
     </div>
 
 

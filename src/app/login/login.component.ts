@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit {
 
   userData : any;
+  hide: boolean = true ;
   constructor(private loginService : LoginService, private userService : UserService, private router : Router)
   {
     this.userData = {};

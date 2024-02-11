@@ -73,46 +73,4 @@
     </div>
   </div>
 </div>
-<!--form (ngSubmit)="createPlan()">
-  <div *ngIf="sessionStorage.getItem('userType') === 'doctor'" class="form-group">
-    <label for="patientUsername">Patient username:</label>
-    <input type="text" class="form-control" placeholder="Enter patient's username" id="patientUsername" name="patientUsername" [(ngModel)]="planData.patientUsername">
-  </div>
-  <div class="form-group">
-    <label for="planName">Name:</label>
-    <input type="text" class="form-control" placeholder="Enter plan's name" id="planName" name="planName" [(ngModel)]="planData.name">
-  </div>
-  <div class="form-group">
-    <label for="planLength">Length in days:</label>
-    <input type="number" class="form-control" placeholder="Enter plan's length in days" id="planLength" name="planLength" [(ngModel)]="planData.planLength">
-  </div>
-  <div class="form-group">
-    <label for="planType">Type:</label>
-    <input type="text" class="form-control" placeholder="Enter plan's type" id="planType" name="planType" [(ngModel)]="planData.type">
-  </div>
 
-
-</form-->
-
-<!--h2> Tabella pazienti  </h2>
-
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Username</th>
-    <th>Name</th>
-    <th>Surname</th>
-    <th>Codice Fiscale</th>
-    <th>Tessera Sanitaria code</th>
-  </tr>
-  </thead>
-  <tbody *ngIf="user.patients">
-  <tr *ngFor="let pat of user.patients" [attr.id]="'r' + pat.username">
-    <td>{{pat.username}}</td>
-    <td>{{pat.name}}</td>
-    <td>{{pat.surname}}</td>
-    <td>{{pat.cf}}</td>
-    <td>{{pat.tscode}}</td>
-  </tr>
-  </tbody>
-</table-->

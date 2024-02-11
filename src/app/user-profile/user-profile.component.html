@@ -6,18 +6,27 @@
       <mat-icon>home</mat-icon>
     </button>
 
+
+
   </mat-toolbar>
 
-  <div *ngIf="user">
 
-    <div class="container">
-      <div class="flex-container">
+  <button mat-raised-button color="primary" (click)="updateUser()">
+    Update data
+    <mat-icon>home</mat-icon>
+  </button>
+
+  <div *ngIf="user" >
+
+
         <h1>User info</h1>
-        <button mat-raised-button color="primary" class="btn btn-success mr-2" (click)="updateUser()">
-          Update data
-          <mat-icon>home</mat-icon>
-        </button>
-        <div style="flex: 1; padding: 10px;">
+
+        <!-- BOTTONE---------------------- -->
+
+        <!-- lista dati utente ---------------------- -->
+    <div class="container">
+      <div class = "list-container">
+
           <mat-list role="list" class="mat-list" >
             <mat-list-item class = "mat-list-item" role="listitem">Nome: {{ user.name }}</mat-list-item>
             <mat-list-item class = "mat-list-item" role="listitem">Cognome: {{ user.surname}}</mat-list-item>
@@ -37,52 +46,60 @@
             </ng-container>
 
           </mat-list>
-          <div *ngIf="sessionStorage.getItem('userType') == 'doctor'">
+    </div>
 
-            <h1>List of patients:</h1>
+          <!-- lista dati utente ---------------------- -->
 
-            <table mat-table [dataSource]="user.patients" class="mat-elevation-z8 demo-table">
+          <!-- tabella per i dottori ------------------ -->
+          <div *ngIf="sessionStorage.getItem('userType') == 'doctor'" class="patient-container">
 
-              <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-              </ng-container>
+            <div class="table-container">
+
+              <h1>List of patients:</h1>
+
+              <table mat-table [dataSource]="user.patients" class="mat-elevation-z8 demo-table">
+
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef> Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
 
 
-              <ng-container matColumnDef="surname">
-                <th mat-header-cell *matHeaderCellDef> Surname </th>
-                <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
-              </ng-container>
+                <ng-container matColumnDef="surname">
+                  <th mat-header-cell *matHeaderCellDef> Surname </th>
+                  <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+                </ng-container>
 
 
-              <ng-container matColumnDef="username">
-                <th mat-header-cell *matHeaderCellDef> Username </th>
-                <td mat-cell *matCellDef="let element"> {{element.username}} </td>
-              </ng-container>
+                <ng-container matColumnDef="username">
+                  <th mat-header-cell *matHeaderCellDef> Username </th>
+                  <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+                </ng-container>
 
-              <ng-container matColumnDef="cf">
-                <th mat-header-cell *matHeaderCellDef> Codice Fiscale </th>
-                <td mat-cell *matCellDef="let element"> {{element.cf}} </td>
-              </ng-container>
+                <ng-container matColumnDef="cf">
+                  <th mat-header-cell *matHeaderCellDef> Codice Fiscale </th>
+                  <td mat-cell *matCellDef="let element"> {{element.cf}} </td>
+                </ng-container>
 
-              <tr mat-header-row *matHeaderRowDef="patientColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: patientColumns;"></tr>
-            </table>
+                <tr mat-header-row *matHeaderRowDef="patientColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: patientColumns;"></tr>
+              </table>
           </div>
-        </div>
+      </div>
 
-        <div style="flex: 1; padding: 10px;">
+            <!-- card con i piani per i pazienti ---------------------- -->
           <div *ngIf="sessionStorage.getItem('userType') == 'patient'">
-            <h1>List of plans</h1>
+
+            <h1>Lista Piani</h1>
 
             <div *ngIf="user.plans">
               <div *ngFor="let plan of user.plans" [attr.id]="'r' + plan.username">
 
-                <mat-card class="example-card">
+                <mat-card>
                   <mat-card-content>
                     <p> Name : {{plan.name}}</p>
                     <p> type: {{plan.type}}</p>
-                    <p> lenght : {{plan.lenght}}</p>
+                    <p> length : {{plan.length}} giorni </p>
                     <mat-divider></mat-divider>
                     <mat-card-actions>
                       <button mat-raised-button class="btn btn-success mr-2" color="primary" (click)="editPlan(plan.id)">Modifica</button>
@@ -95,7 +112,7 @@
 
             <h1>List of doctors</h1>
 
-            <table mat-table [dataSource]="user.doctors" class="mat-elevation-z8 demo-table">
+            <table mat-table [dataSource]="user.doctors" >
 
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -122,9 +139,8 @@
               <tr mat-header-row *matHeaderRowDef="doctorColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: doctorColumns;"></tr>
             </table>
+
           </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>

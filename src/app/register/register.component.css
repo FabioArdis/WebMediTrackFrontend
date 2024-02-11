@@ -17,6 +17,7 @@
   flex-direction: column;
   align-items: flex-start;
   margin-top: 40px;
+  padding-left: 20px;
 }
 
 .form-row {
@@ -26,7 +27,9 @@
 }
 
 .form-field {
-  width: calc(30% - 12px);
+  width: calc(25% - 10px);
   margin-right: 20px;
+  /*padding-left: 20px;*/
 }
+
 

@@ -11,6 +11,8 @@ import {UserService} from "../user.service";
 })
 export class RegisterComponent implements OnInit {
   userData : any = { };
+  hide = true;
+
   constructor(private registerService : RegisterService, private userService : UserService, private router : Router) { }
 
   registerUser() : void
@@ -52,4 +54,9 @@ export class RegisterComponent implements OnInit {
   goToHome() {
     this.router.navigate(['']);
   }
+
+
+
 }
+
+

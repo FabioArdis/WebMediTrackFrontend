@@ -25,3 +25,7 @@
 .toolBar button {
   margin-left: auto; /* Sposta il pulsante tutto a destra */
 }
+
+.form-field{
+  width: 20%;
+}
